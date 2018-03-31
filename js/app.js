@@ -43,10 +43,27 @@ function createDeck() {
         card.classList.add("card");
         card.appendChild(cardFace);
         deck.appendChild(card);
+        card.addEventListener("click", checkCard);
 
     }
     deck.appendChild(fragment);
 
+}
+
+//Flip card when clicked and assign cards to variables
+
+function checkCard() {
+    if (!firstCard) {
+        firstCard = this;
+        firstCard.removeEventListener('click', checkCard);
+        firstCard.classList.add('show');
+        firstCard.classList.add('open');
+    } else if (!secondCard) {
+        secondCard = this;
+        secondCard.removeEventListener('click', checkCard);
+        secondCard.classList.add('show');
+        secondCard.classList.add('open');
+    }
 }
 
 createDeck();
