@@ -84,7 +84,11 @@ h1 {
 /*
  * Styles for the Score Panel
  */
-
+ .time {
+     display: inline;
+     margin-left: 10px;
+ }
+ 
 .score-panel {
     text-align: left;
     width: 345px;
