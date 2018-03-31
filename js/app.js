@@ -65,6 +65,8 @@ function checkCard() {
         secondCard.classList.add('show');
         secondCard.classList.add('open');
         moveCounter++
+        document.getElementById("moves").textContent = moveCounter;
+        calcStars();
     }
     checkMatch();
 }
@@ -117,6 +119,29 @@ function checkWin() {
     if (matchCounter === 8) {
       clearInterval(timer);
     }
+}
+
+//calculate amount of stars
+function calcStars(){
+const stars = document.querySelector(".stars");
+switch (moveCounter){
+   case 15:
+   stars.children[0].innerHTML = '<i class="fa fa-star-o"></i>';
+   starCount--;
+   break;
+   case 20:
+   stars.children[1].innerHTML = '<i class="fa fa-star-o"></i>';
+   starCount--;
+   break;
+   case 25:
+   stars.children[2].innerHTML = '<i class="fa fa-star-o"></i>';
+   starCount--;
+   break;
+   case 30:
+   stars.children[3].innerHTML = '<i class="fa fa-star-o"></i>';
+   starCount--;
+}
+
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
