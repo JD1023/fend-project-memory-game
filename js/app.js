@@ -63,10 +63,36 @@ function checkCard() {
         secondCard.removeEventListener('click', checkCard);
         secondCard.classList.add('show');
         secondCard.classList.add('open');
+        moveCounter++
+    }
+    checkMatch();
+}
+
+//Compare first and second card to see if there is a match
+
+function checkMatch() {
+    if (firstCard.firstChild.className === secondCard.firstChild.className) {
+        firstCard.classList.add('match');
+        secondCard.classList.add('match');
+        firstCard = null;
+        secondCard = null;
+        matchCounter++;
+        checkWin();
+
+    } else {
+        setTimeout(function () {
+            firstCard.addEventListener('click', checkCard);
+            firstCard.classList.remove('open');
+            firstCard.classList.remove('show');
+            secondCard.addEventListener('click', checkCard);
+            secondCard.classList.remove('open');
+            secondCard.classList.remove('show');
+            firstCard = null;
+            secondCard = null;
+        }, 2000)
     }
 }
 
-createDeck();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
