@@ -118,6 +118,7 @@ function startTimer() {
 function checkWin() {
     if (matchCounter === 8) {
       clearInterval(timer);
+      showResult();
     }
 }
 
@@ -142,6 +143,14 @@ switch (moveCounter){
    starCount--;
 }
 
+}
+
+//show modal with final score
+function showResult(){
+  const modal = document.querySelector("#gameOverModal");
+  document.getElementById("modalBody").children[0].textContent = "Your time was " + (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+  document.getElementById("modalBody").children[1].innerHTML = "You made " + moveCounter + " moves, and scored " + starCount + " stars!";
+  modal.style.display = "block";
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
