@@ -31,6 +31,10 @@ let hours = 0;
 let starCount = 5;
 const deck = document.querySelector(".deck");
 const displayTime = document.getElementById("time");
+const restartGame = document.getElementById("restart");
+restartGame.addEventListener("click", restart);
+const modal = document.querySelector("#gameOverModal");
+document.querySelector("#closeBtn").addEventListener("click", restart);
 
 //Generate HTML for deck
 function createDeck() {
@@ -151,6 +155,36 @@ function showResult(){
   document.getElementById("modalBody").children[0].textContent = "Your time was " + (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
   document.getElementById("modalBody").children[1].innerHTML = "You made " + moveCounter + " moves, and scored " + starCount + " stars!";
   modal.style.display = "block";
+}
+
+function restart() {
+    clearInterval(timer);
+    timer = 0;
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+    displayTime.textContent = "Time " + (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+    createDeck();
+    firstCard = null;
+    secondCard = null;
+    moveCounter = 0;
+    matchCounter = 0;
+    let starCount = 5;
+    document.getElementById("moves").textContent = moveCounter;
+    makeStars();
+    modal.style.display = "none";
+
+
+
+}
+
+//function to reset stars
+function makeStars(){
+  const stars = document.querySelector(".stars");
+  for (let i = 0; i < 4 ; i++){
+    stars.children[i].innerHTML = '<i class="fa fa-star"></i>';
+  }
+
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
