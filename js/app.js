@@ -71,6 +71,7 @@ function checkCard() {
         moveCounter++
         document.getElementById("moves").textContent = moveCounter;
         calcStars();
+        document.body.style.pointerEvents = "none";
     }
     checkMatch();
 }
@@ -85,9 +86,9 @@ function checkMatch() {
         secondCard = null;
         matchCounter++;
         checkWin();
-
     } else {
         setTimeout(function () {
+            document.body.style.pointerEvents = "initial";
             firstCard.addEventListener('click', checkCard);
             firstCard.classList.remove('open');
             firstCard.classList.remove('show');
@@ -96,7 +97,7 @@ function checkMatch() {
             secondCard.classList.remove('show');
             firstCard = null;
             secondCard = null;
-        }, 2000)
+        }, 1000)
     }
 }
 
@@ -114,12 +115,13 @@ function startTimer() {
             }
         }
         displayTime.textContent = "Time " + (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-    }, 1000)
+    }, 500)
 }
 
 //check if game is over and stop timer
 
 function checkWin() {
+    document.body.style.pointerEvents = "initial";
     if (matchCounter === 8) {
       clearInterval(timer);
       showResult();
