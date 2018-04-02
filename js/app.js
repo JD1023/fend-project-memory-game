@@ -69,7 +69,7 @@ function checkCard() {
         secondCard.classList.add('show');
         secondCard.classList.add('open');
         moveCounter++
-        document.getElementById("moves").textContent = moveCounter;
+        document.getElementById("moves").textContent = moveCounter + " Moves";
         calcStars();
         document.body.style.pointerEvents = "none";
     }
@@ -172,7 +172,7 @@ function restart() {
     moveCounter = 0;
     matchCounter = 0;
     let starCount = 5;
-    document.getElementById("moves").textContent = moveCounter;
+    document.getElementById("moves").textContent = moveCounter + " Moves";
     makeStars();
     modal.style.display = "none";
 
