@@ -28,7 +28,7 @@ let timer;
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
-let starCount = 5;
+let starCount = 3;
 const deck = document.querySelector(".deck");
 const displayTime = document.getElementById("time");
 const restartGame = document.getElementById("restart");
@@ -144,13 +144,6 @@ switch (moveCounter){
    stars.children[1].innerHTML = '<i class="fa fa-star-o"></i>';
    starCount--;
    break;
-   case 25:
-   stars.children[2].innerHTML = '<i class="fa fa-star-o"></i>';
-   starCount--;
-   break;
-   case 30:
-   stars.children[3].innerHTML = '<i class="fa fa-star-o"></i>';
-   starCount--;
 }
 
 }
@@ -159,7 +152,10 @@ switch (moveCounter){
 function showResult(){
   const modal = document.querySelector("#gameOverModal");
   document.getElementById("modalBody").children[0].textContent = "Your time was " + (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+if (starCount > 1 ){
   document.getElementById("modalBody").children[1].innerHTML = "You made " + moveCounter + " moves, and scored " + starCount + " stars!";
+}else{document.getElementById("modalBody").children[1].innerHTML = "You made " + moveCounter + " moves, and scored " + starCount + " star!";
+}
   modal.style.display = "block";
 }
 
@@ -187,7 +183,7 @@ function restart() {
 //function to reset stars
 function makeStars(){
   const stars = document.querySelector(".stars");
-  for (let i = 0; i < 4 ; i++){
+  for (let i = 0; i < 3 ; i++){
     stars.children[i].innerHTML = '<i class="fa fa-star"></i>';
   }
 
