@@ -87,6 +87,8 @@ function checkMatch() {
         matchCounter++;
         checkWin();
     } else {
+            firstCard.classList.add('no-match');
+            secondCard.classList.add('no-match');
         setTimeout(function () {
             document.body.style.pointerEvents = "initial";
             firstCard.addEventListener('click', checkCard);
@@ -95,6 +97,8 @@ function checkMatch() {
             secondCard.addEventListener('click', checkCard);
             secondCard.classList.remove('open');
             secondCard.classList.remove('show');
+            firstCard.classList.remove('no-match');
+            secondCard.classList.remove('no-match');
             firstCard = null;
             secondCard = null;
         }, 1000)
