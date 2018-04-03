@@ -111,7 +111,7 @@ function startTimer() {
       }
     }
     displayTime.textContent = 'Time ' + (hours ? (hours > 9 ? hours : '0' + hours) : '00') + ':' + (minutes ? (minutes > 9 ? minutes : '0' + minutes) : '00') + ':' + (seconds > 9 ? seconds : '0' + seconds);
-  }, 500)
+  }, 1000)
 }
 
 //check if game is over and stop timer
@@ -163,7 +163,7 @@ function restart() {
   secondCard = null;
   moveCounter = 0;
   matchCounter = 0;
-  let starCount = 5;
+  starCount = 5;
   document.getElementById("moves").textContent = moveCounter + ' Moves';
   makeStars();
   modal.style.display = "none";
