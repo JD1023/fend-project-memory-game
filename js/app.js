@@ -68,8 +68,8 @@ function checkCard() {
     document.getElementById("moves").textContent = moveCounter + " Moves";
     calcStars();
     document.body.style.pointerEvents = "none";
+    checkMatch();
   }
-  checkMatch();
 }
 
 //Compare first and second card to see if there is a match
