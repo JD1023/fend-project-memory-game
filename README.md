@@ -17,6 +17,7 @@ Try and match up two of each symbol until all cards are flipped face up to win t
 
 * HTML, CSS, JavaScript.
 * [Animate.css](https://daneden.github.io/animate.css/) - Animation library used.
+* [font-awesome.css](https://fontawesome.com/v4.7.0/icons/) - Card icons.
 
 ## Contributing
 
