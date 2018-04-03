@@ -61,13 +61,11 @@ function checkCard() {
     if (!firstCard) {
         firstCard = this;
         firstCard.removeEventListener('click', checkCard);
-        firstCard.classList.add('show');
-        firstCard.classList.add('open');
+        firstCard.classList.add('show','open');
     } else if (!secondCard) {
         secondCard = this;
         secondCard.removeEventListener('click', checkCard);
-        secondCard.classList.add('show');
-        secondCard.classList.add('open');
+        secondCard.classList.add('show','open');
         moveCounter++
         document.getElementById("moves").textContent = moveCounter + " Moves";
         calcStars();
@@ -80,25 +78,23 @@ function checkCard() {
 
 function checkMatch() {
     if (firstCard.firstChild.className === secondCard.firstChild.className) {
-        firstCard.classList.add('match');
-        secondCard.classList.add('match');
+        firstCard.classList.add('match','animated','bounce');
+        secondCard.classList.add('match','animated','bounce');
         firstCard = null;
         secondCard = null;
         matchCounter++;
         checkWin();
     } else {
-            firstCard.classList.add('no-match');
-            secondCard.classList.add('no-match');
+            firstCard.classList.add('no-match','animated','shake');
+            secondCard.classList.add('no-match','animated','shake');
         setTimeout(function () {
             document.body.style.pointerEvents = "initial";
             firstCard.addEventListener('click', checkCard);
-            firstCard.classList.remove('open');
-            firstCard.classList.remove('show');
+            firstCard.classList.remove('open','show');
             secondCard.addEventListener('click', checkCard);
-            secondCard.classList.remove('open');
-            secondCard.classList.remove('show');
-            firstCard.classList.remove('no-match');
-            secondCard.classList.remove('no-match');
+            secondCard.classList.remove('open','show');
+            firstCard.classList.remove('no-match','animated','shake');
+            secondCard.classList.remove('no-match','animated','shake');
             firstCard = null;
             secondCard = null;
         }, 1000)
@@ -159,6 +155,7 @@ if (starCount > 1 ){
   modal.style.display = "block";
 }
 
+//restart game
 function restart() {
     clearInterval(timer);
     timer = 0;
